@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model} = require('mongoose');
 
 const ThoughtSchema = new Schema({
   thoughtText: {
@@ -12,11 +12,12 @@ const ThoughtSchema = new Schema({
     default: Date.now
   },
    username: {
-    type: String,
-    required: true
-  },
-  reactions: []
+   type: String,
+   required: true
+  }
 });
+
+
 
 const Thought = model('Thought', ThoughtSchema);
 

@@ -4,31 +4,41 @@ const { User } = require('../models');
 const userController = {
 
   // get all users
-    getAllUser(req, res) {
-    User.find({})
-      .then(dbUserData => res.json(dbUserData))
-      .catch(err => {
-        console.log(err);
-        res.status(400).json(err);
-      });
-  },
+ getAllUser(req, res) {
+        User.find({})
+        // populate users thoughts
+        .populate({path: 'thoughts', select: '-__v'})
+        // populate user friends
+        .populate({path: 'friends', select: '-__v'})
+        .select('-__v')
+        // .sort({_id: -1})
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    },
 
-  // get user by id
-  getUserById({ params }, res) {
-    User.findOne({ _id: params.id })
-      .then(dbUserData => {
-        // If no user is found, send 404
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id!' });
-          return;
-        }
-        res.json(dbUserData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(400).json(err);
-      });
-  },
+  
+   // Get single user by ID
+    getUserById({params}, res) {
+        User.findOne({_id: params.id })
+        .populate({path: 'thoughts', select: '-__v'})
+        .populate({path: 'friends', select: '-__v'})
+        .select('-__v')
+        // return if no user is found 
+        .then(dbUserData => {
+            if(!dbUserData) {
+                res.status(404).json({message: 'No User with this particular ID!'});
+                return; 
+            }
+            res.json(dbUserData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err)
+        })
+    },
 
 // createUser
 createUser({ body }, res) {
