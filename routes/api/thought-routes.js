@@ -13,8 +13,7 @@ const { create } = require('../../models/Thought');
 // Set up GET all and POST at /api/thoughts
 router
   .route('/')
-  .get(getAllThought)
-  .post(createThought);
+  .get(getAllThought);
 
 // Set up GET one, PUT, and DELETE at /api/thoughts/:id
 router
@@ -22,6 +21,10 @@ router
   .get(getThoughtById)
   .put(updateThought)
   .delete(deleteThought);
+
+router
+  .route('/:userId')
+  .post(createThought);
 
 
 module.exports = router;
