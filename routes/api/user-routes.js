@@ -6,6 +6,8 @@ const {
   createUser,
   updateUser,
   deleteUser
+ 
+
 } = require('../../controllers/user-controller');
 const { create } = require('../../models/User');
 
@@ -21,5 +23,7 @@ router
   .get(getUserById)
   .put(updateUser)
   .delete(deleteUser);
+
+
 
 module.exports = router;
