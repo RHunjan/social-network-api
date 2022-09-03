@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+
 const UserSchema = new Schema({
     username: {
         type: String,
@@ -13,9 +14,34 @@ const UserSchema = new Schema({
         match: /.+\@.+\..+/,
         unique: true,
     },
-    thoughts: [],
-    friends: []
+    thoughts: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Thought'
+        }
+    ],
+    friends: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'User'
+        }
+    ]
+},
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false
+  }
+
+);
+
+// get total count of friends
+UserSchema.virtual('friendCount').get(function() {
+  return this.friends.length;
 });
+
+
 
 // create the User model using the UserSchema
 const User = model('User', UserSchema);
