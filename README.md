@@ -20,5 +20,5 @@ This repository holds the APIs for a social network web application where users 
 
 
 Walkthrough Videos:
-#1 - https://drive.google.com/file/d/1iOuJxGTTi_zkyAC_g8TKfI-aXsY8Jfe8/view
-#2 - https://drive.google.com/file/d/1IIESgNjgrTVY8jr6kaRhkSbBuNHU52x7/view
+- #1 - https://drive.google.com/file/d/1iOuJxGTTi_zkyAC_g8TKfI-aXsY8Jfe8/view
+- #2 - https://drive.google.com/file/d/1IIESgNjgrTVY8jr6kaRhkSbBuNHU52x7/view
