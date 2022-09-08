@@ -1,7 +1,5 @@
 # social-network-api
 
-# social-network-api
-
 This repository holds the APIs for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. 
 
 #Acceptance Criteria:
